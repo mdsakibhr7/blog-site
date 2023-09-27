@@ -1,4 +1,24 @@
-<?php include 'header.php' ?>
+<?php include 'header.php';
+
+global $conn;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $firstname = isset($_POST['firstName']) ? $_POST['firstName'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $mobile = isset($_POST['mobile']) ? $_POST['mobile'] : '';
+    $role = isset($_POST['role']) ? $_POST['role'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+    // Prepare and execute the SQL query
+    $sql = "INSERT INTO users (firstname, email, mobile, role, password) VALUES ('$firstname', '$email', '$mobile', '$role', '$password')";
+    $result = mysqli_query($conn, $sql);
+
+
+}
+
+
+?>
 
 
 <section class="vh-100" style="background-color: #eee;">
@@ -43,7 +63,8 @@
                                     </div>
 
                                     <div class="text-center mb-3 mb-lg-4">
-                                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                        <button type="submit" name="submit" class="btn btn-primary btn-lg">Register
+                                        </button>
                                     </div>
 
                                 </form>

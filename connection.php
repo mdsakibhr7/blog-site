@@ -4,6 +4,8 @@ $username = "root";
 $password = "";
 $dbname = "blogwebsite";
 
+global $conn;
+
 $conn = new mysqli($servername, $username, $password);
 
 // Check connection
